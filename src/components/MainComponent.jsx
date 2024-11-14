@@ -38,7 +38,7 @@ function MainComponent() {
       let longitudine;  
 
       e.preventDefault();
-      
+
       axios.get(`${apiUrl}${input}`).then((city) => {
         latitudine = city.data.results[0].latitude;
         longitudine = city.data.results[0].longitude;
@@ -60,28 +60,30 @@ function MainComponent() {
 
   return (
     <>
-      <div className='p-5 flex justify-between items-center bg-slate-400'>
+      <div className='p-8 flex justify-between items-center bg-slate-400 relative'>
         <div>
           <h1 className='text-3xl uppercase text-white font-bold'>React Weather</h1>
         </div>
-        <div className='relative max-w-sm w-full'>
+        <div className='max-w-sm w-full z-10 absolute right-5 top-1/2 -translate-y-1/2'>
           <form onSubmit={searchData}>
-            <div className={input.length >= 3 ? 'bg-white px-2.5 py-2 rounded-t-3xl flex items-center' : 'bg-white px-2.5 py-2 rounded-3xl flex items-center'} >
-              <input type="text" className='py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent appearance-none focus:outline-none focus:ring-0 peer' value={input} onChange={handleChange} placeholder='Search a location'/>
-              <button className=' px-3 py-1 rounded-3xl bg-slate-400 text-white font-bold' type='submit'>
-                <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                  <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
-                </svg>
-              </button>
+            <div className={input.length >= 3 ? 'bg-white px-2.5 py-2 rounded-t-3xl rounded-bottom  flex flex-col shadow relative' : 'bg-white px-2.5 py-2 rounded-3xl flex flex-col shadow relative'} >
+              <div className='flex justify-between'>
+                <input type="text" className='py-2.5 ps-3 w-full text-md text-gray-900 bg-transparent appearance-none focus:outline-none focus:ring-0 peer' value={input} onChange={handleChange} placeholder='Search a location'/>
+                <button className=' px-3 py-2 rounded-3xl bg-slate-400 text-white font-bold' type='submit'>
+                  <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"/>
+                  </svg>
+                </button>
+              </div>
             </div>
           </form>
-          {input.length >= 3 && 
-          <div className='bg-white border absolute py-4 rounded-b-3xl w-full mt-3'>
-            <ul>
-              {selectedCity}
-            </ul>
-          </div>
-          }
+              {input.length >= 3 && 
+              <div className='absolute bg-white w-full rounded-b-3xl slide-bottom py-4 border'>
+                <ul>
+                  {selectedCity}
+                </ul>
+              </div>
+              }
         </div>
       </div>
 
