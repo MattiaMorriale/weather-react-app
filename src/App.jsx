@@ -39,7 +39,9 @@ function App() {
 
   return (
     <>
+    <div className='my-img h-screen'>
       <MainComponent></MainComponent>
+    </div>
     </>
   )
 }
