@@ -40,7 +40,7 @@ function SearchBar({selectedCity}) {
         <>
             <div className={input.length >= 3 ? 'bg-white px-2.5 py-2 rounded-t-3xl rounded-bottom  flex flex-col shadow-xl relative' : 'bg-white px-2.5 py-2 rounded-3xl flex flex-col shadow-xl relative'} >
                 <div className='flex justify-between'>
-                    <input type="text" className='py-2.5 ps-3 w-full text-md text-gray-900 bg-transparent appearance-none focus:outline-none focus:ring-0 peer' value={input} onChange={handleChange} placeholder='Search a location'/>
+                    <input type="text" className='py-2.5 ps-3 w-full text-md text-gray-900 bg-transparent border-none appearance-none focus:outline-none focus:ring-0 peer' value={input} onChange={handleChange} placeholder='Search a location'/>
                 </div>
             </div>
             {input.length >= 3 && cityList.length > 0 && (

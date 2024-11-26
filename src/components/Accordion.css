@@ -1,0 +1,49 @@
+
+.accordion-slide-bottom {
+    animation: accordion-slide-bottom 0.5s cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+/**
+ * ----------------------------------------
+ * animation slide-bottom
+ * ----------------------------------------
+ */
+
+  @keyframes accordion-slide-bottom {
+    0% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+              max-height: 0;
+              opacity:0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+              max-height: 384px;
+              opacity:1;
+              
+    }
+  }
+
+  .accordion-slide-bottom-hidden {
+    animation: accordion-slide-bottom-hidden 0.3s cubic-bezier(0, 0, 0.2, 1) both;
+    opacity:0;
+}
+
+
+  @keyframes accordion-slide-bottom-hidden {
+    0% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+              max-height: 384px;
+              opacity:1;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+              max-height: 0;
+              opacity:0;
+              
+    }
+  }
+

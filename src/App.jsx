@@ -34,6 +34,8 @@ Test unitari: Scrivi dei test unitari per assicurarti che il tuo codice funzioni
 import { useState } from 'react'
 import './App.css'
 import MainComponent from './components/MainComponent'
+import 'flowbite'
+import 'flowbite/dist/flowbite.css'
 
 function App() {
 
