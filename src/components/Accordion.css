@@ -1,13 +1,12 @@
-
-.accordion-slide-bottom {
-    animation: accordion-slide-bottom 0.5s cubic-bezier(0, 0, 0.2, 1) both;
+.max-height {
+  max-height:900px
 }
 
-/**
- * ----------------------------------------
- * animation slide-bottom
- * ----------------------------------------
- */
+
+.accordion-slide-bottom {
+    animation: accordion-slide-bottom 0.3s linear both;
+}
+
 
   @keyframes accordion-slide-bottom {
     0% {
@@ -26,7 +25,7 @@
   }
 
   .accordion-slide-bottom-hidden {
-    animation: accordion-slide-bottom-hidden 0.3s cubic-bezier(0, 0, 0.2, 1) both;
+    animation: accordion-slide-bottom-hidden 0.1s linear both;
     opacity:0;
 }
 

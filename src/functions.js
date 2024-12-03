@@ -10,7 +10,7 @@ export const searchCities = async(input) => {
 } 
 
 export const weatherData = async(latitude, longitude) => {
-    const resultsData = await axios.get(`${apiUrlWeather}latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m,wind_direction_10m&hourly=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min`)
+    const resultsData = await axios.get(`${apiUrlWeather}latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,precipitation,wind_speed_10m,wind_direction_10m&hourly=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,weather_code,wind_speed_10m_max`)
 
     return resultsData.data;
 }

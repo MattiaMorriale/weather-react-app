@@ -7,18 +7,41 @@ import './MainComponent.css'
 
 function MainComponent() {
 
+    let animatedSvg = "src/assets/animated/";
+
     const [cityObject, setCityObject] = useState({});
     const [boolean, setBoolean] = useState(false);
     
     const date = new Date();
+    let final = date.getMinutes();
+
+    if(final < 10) {
+      final = '0' + final;
+    }
+
     const currentDate = date.toLocaleDateString();
-    const currentTime = date.getHours() + ':' + date.getMinutes();
+    const currentTime = date.getHours() + ':' + final;
+    
+    const arrayTemps = [];
+    const arrayTimes = [];
+    const arrayCodes = [];
 
     const retrieveData = async (name) => {
       const latitude = name.latitude;
       const longitude = name.longitude
+      
 
       const calApi = await weatherData(latitude, longitude);
+
+      const newArray = calApi.hourly.temperature_2m;
+      const newArrayTimes = calApi.hourly.time;
+      const newArrayCodes = calApi.hourly.weather_code;
+      
+      for (let i = 0; i < 7; i++) {
+      arrayTemps.push(newArray.splice(0, 24));
+      arrayTimes.push(newArrayTimes.splice(0, 24));
+      arrayCodes.push(newArrayCodes.splice(0, 24));
+      }
       
       setCityObject(
         {
@@ -30,10 +53,15 @@ function MainComponent() {
           longitude: name.longitude,
           elevation: name.elevation,
           temp: calApi,
+          daily: calApi.daily,
+          arrayCodes: arrayCodes,
+          arrayTemps: arrayTemps,
+          arrayTimes: arrayTimes,
         })
         
+
         setBoolean(true);
-        console.log(cityObject)
+        console.log(cityObject, arrayTemps, arrayTimes, calApi)
       }
 
       let condition; 
@@ -49,23 +77,38 @@ function MainComponent() {
         condition = (
             <>
               <div className='grid grid-cols-2'>
-                <div className='p-5'>
+                <div className='p-5 grid grid-rows-2 gap-5'>
+
                   <div href="#" className="flex justify-between w-full p-6 backdrop-blur-sm border border-white rounded-lg shadow-xl ">
-                    <div className='p-4 w-1/3'>
-                      <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{cityObject.cityName}, {cityObject.region}, {cityObject.country}</h5>
-                      <h4 className='text-white'>Previsione:</h4>
-                      <p className='text-white font-bold'>{currentDate} | {currentTime}</p>
+                    <div className='p-4 w-full flex'>
+                      <div className='w-full flex justify-between gap-10'>
+                        <div className='flex flex-col justify-between'>  
+                          <div>
+                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-white uppercase">{cityObject.cityName}, {cityObject.region}, {cityObject.country}</h5>
+                            <h4 className='text-white'>Previsione:</h4>
+                            <p className='text-white font-bold'>{currentDate} | {currentTime}</p>
+                            <div className='flex gap-5'>
+                              <h5 className="text-8xl font-bold tracking-tight text-white">{cityObject.temp.current.temperature_2m}°C</h5>
+                              <div className='flex flex-col items-center justify-end gap-1'>
+                                <h5 className="font-bold text-3xl text-white text-center">{cityObject.temp.daily.temperature_2m_max[0]}°</h5>
+                                <hr className='border w-full'/>
+                                <h5 className="font-bold text-3xl text-white">{cityObject.temp.daily.temperature_2m_min[0]}°</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className='w-full flex justify-end'>
+                          <img src={animatedSvg + 'cloudy-1-day.svg'} className='w-52 h-52' />
+                        </div>
+                      </div>
                     </div>
-                    <div className='border-x p-4 w-1/3 flex justify-between'>
+                  </div>
+
+                  <div href="#" className="flex justify-between w-full p-6 backdrop-blur-sm border border-white rounded-lg shadow-xl ">
+                    <div className='p-4 w-1/3 flex justify-between'>
                       <div>
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">{cityObject.temp.current.temperature_2m}°C</h5>
                         <p className="font-normal text-white">Umidità: {cityObject.temp.current.relative_humidity_2m} %</p>
                         <p className="font-normal text-white">Precipitazioni: {cityObject.temp.current.precipitation} %</p>
-                      </div>
-                      <div>
-                        <h5 className="font-bold text-xl text-white text-center">{cityObject.temp.daily.temperature_2m_max[0]}°</h5>
-                        <hr />
-                        <h5 className="font-bold text-xl text-white text-center">{cityObject.temp.daily.temperature_2m_min[0]}°</h5>
                       </div>
                     </div>
                     <div className='p-4 w-1/3'>
@@ -74,9 +117,10 @@ function MainComponent() {
                       <p className="font-normal text-white">Direzione: {cityObject.temp.current.wind_direction_10m}°</p>
                     </div>
                   </div>
+
                 </div>
                 <div className='p-5'>
-                  <Accordion></Accordion>
+                  <Accordion DayForecastWind={cityObject.daily} DayForecastCodes={cityObject.arrayCodes} DayForecastHourly={cityObject.arrayTemps} DayForecastTimes={cityObject.arrayTimes} DayForecastDaily={cityObject.temp.daily}></Accordion>
                 </div>
               </div>
             </>
