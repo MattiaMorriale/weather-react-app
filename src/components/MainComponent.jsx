@@ -216,7 +216,7 @@ function MainComponent() {
       if(boolean === false) {
         condition = (
           <div className='-mt-32 flex justify-center items-center h-full w-full'>
-            <img className=' w-48' src="public/weather_p.png" alt="#" />
+            <img className=' w-48' src="weather_p.png" alt="#" />
           </div>
 
         );
@@ -292,7 +292,7 @@ function MainComponent() {
     <>
       <div className='p-8 flex justify-between items-center'>
         <div className='hidden md:block'>
-          <img className='filter invert' src="public/weather_p.png" alt="#" />
+          <img className='filter invert' src="weather_p.png" alt="#" />
         </div>
         <div className='w-full md:max-w-sm z-10 '>
             <SearchBar selectedCity={retrieveData}></SearchBar>
