@@ -5,7 +5,7 @@ function Accordion({DayForecastHourly,  DayForecastTimes, DayForecastDaily, DayF
 
     const [isActiveIndex, setIsActiveIndex] = useState(null);
 
-    let staticSvg = "src/assets/static/";
+    let staticSvg = "/static/";
 
     const Day = [
         'Domenica',

@@ -142,8 +142,8 @@ function MainComponent() {
     },
   };
 
-    let animatedSvg = "src/assets/animated/";
-    let staticSvg = "src/assets/static/";
+    let animatedSvg = "/animated/";
+    let staticSvg = "/static/";
 
     const [cityObject, setCityObject] = useState({});
     const [boolean, setBoolean] = useState(false);
