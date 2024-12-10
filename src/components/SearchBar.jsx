@@ -38,13 +38,14 @@ function SearchBar({selectedCity}) {
 
     return (
         <>
-            <div className={input.length >= 3 ? 'bg-white px-2.5 py-2 rounded-t-3xl rounded-bottom  flex flex-col shadow-xl relative' : 'bg-white px-2.5 py-2 rounded-3xl flex flex-col shadow-xl relative'} >
+        <div className="relative">
+            <div className={input.length >= 3 ? 'bg-white px-2.5 py-2 rounded-t-3xl rounded-bottom  flex flex-col shadow-xl' : 'bg-white px-2.5 py-2 rounded-3xl flex flex-col shadow-xl'} >
                 <div className='flex justify-between'>
                     <input type="text" className='py-2.5 ps-3 w-full text-md text-gray-900 bg-transparent border-none appearance-none focus:outline-none focus:ring-0 peer' value={input} onChange={handleChange} placeholder='Search a location'/>
                 </div>
             </div>
             {input.length >= 3 && cityList.length > 0 && (
-                <div className='absolute bg-white w-full rounded-b-3xl slide-bottom py-4 border'>
+                <div className='bg-white w-full rounded-b-3xl slide-bottom py-4 border absolute'>
                     <ul>
                     {cityList.map((city, index) => (
                         <li key={city.name + index} onClick={() => handleSelect(city)} className='px-2.5 hover:bg-slate-200 cursor-pointer'>
@@ -54,6 +55,7 @@ function SearchBar({selectedCity}) {
                     </ul>
                 </div>
             )}
+        </div>
         </>
     )
 }

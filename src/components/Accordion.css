@@ -1,10 +1,6 @@
-.max-height {
-  max-height:900px
-}
-
 
 .accordion-slide-bottom {
-    animation: accordion-slide-bottom 0.3s linear both;
+    animation: accordion-slide-bottom 0.4s linear both;
 }
 
 
@@ -25,7 +21,7 @@
   }
 
   .accordion-slide-bottom-hidden {
-    animation: accordion-slide-bottom-hidden 0.1s linear both;
+    animation: accordion-slide-bottom-hidden both;
     opacity:0;
 }
 

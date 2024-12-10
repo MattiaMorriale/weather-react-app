@@ -9,10 +9,31 @@
 
   color:black;
 
+  background-image: url('src/assets/mohammad-alizade-CDu0x1Aiils-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;  
+  background-attachment: fixed;
+
   user-select:none;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 25px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: white; 
+  border-radius: 25px;
 }
