@@ -216,7 +216,7 @@ function MainComponent() {
       if(boolean === false) {
         condition = (
           <div className='-mt-32 flex justify-center items-center h-full w-full'>
-            <img className=' w-48' src="weather_p.png" alt="#" />
+            <img className='filter invert w-48' src="weather_p.png" alt="#" />
           </div>
 
         );
