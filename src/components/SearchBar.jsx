@@ -48,7 +48,7 @@ function SearchBar({selectedCity}) {
                 <div className='bg-white w-full rounded-b-3xl slide-bottom py-4 border absolute'>
                     <ul>
                     {cityList.map((city, index) => (
-                        <li key={city.name + index} onClick={() => handleSelect(city)} className='px-2.5 hover:bg-slate-200 cursor-pointer'>
+                        <li key={city.name + index} onClick={() => handleSelect(city)} className='px-2.5 hover:bg-slate-100 cursor-pointer'>
                             {city.name}, {city.admin1}, {city.country}
                         </li>
                     ))}

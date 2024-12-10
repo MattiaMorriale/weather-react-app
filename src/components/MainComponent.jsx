@@ -215,8 +215,8 @@ function MainComponent() {
 
       if(boolean === false) {
         condition = (
-          <div className='my-24 w-full'>
-            <h5 className='text-center text-white uppercase font-bold text-3xl'>Cerca una Città per avere le informazioni metereologiche!</h5>
+          <div className='-mt-32 flex justify-center items-center h-full w-full'>
+            <img className='filter invert w-48' src="src/assets/weather_p.png" alt="#" />
           </div>
 
         );
@@ -263,7 +263,7 @@ function MainComponent() {
                     <div className='w-1/2 flex justify-center p-3'>
                     <div>
                       <h5 className="mb-2 text-2xl font-bold tracking-tight text-white">Vento</h5>
-                      <p className="font-normal text-white">Velocità: {cityObject.temp.current.wind_speed_10m} <span className='text-sm'>Km/h</span></p>
+                      <p className="font-normal text-white">Velocità: {cityObject.temp.current.wind_speed_10m} <span className='text-smç'>Km/h</span></p>
                       <p className="font-normal text-white">Direzione: {cityObject.temp.current.wind_direction_10m}°</p>
                     </div>
                     </div>
@@ -292,7 +292,7 @@ function MainComponent() {
     <>
       <div className='p-8 flex justify-between items-center'>
         <div className='hidden md:block'>
-          <h1 className='text-3xl uppercase text-white font-bold'>React Weather</h1>
+          <img className='filter invert' src="src/assets/weather_p.png" alt="#" />
         </div>
         <div className='w-full md:max-w-sm z-10 '>
             <SearchBar selectedCity={retrieveData}></SearchBar>
